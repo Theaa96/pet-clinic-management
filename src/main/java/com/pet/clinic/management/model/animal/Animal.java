@@ -1,14 +1,20 @@
-package com.pet.clinic.management.model;
+package com.pet.clinic.management.model.animal;
 
+import jakarta.persistence.*;
+
+@MappedSuperclass
 public class Animal {
-    protected String id;
+    @Id
+    protected Long id;
     protected String name;
     protected Integer age;
     protected String gender;
     protected Boolean neutered;
+
+    @Enumerated(EnumType.STRING)
     protected AnimalType animalType;
 
-    public Animal(String name, String id, Integer age, String gender, Boolean neutered, AnimalType animalType) {
+    public Animal(String name, Long id, Integer age, String gender, Boolean neutered, AnimalType animalType) {
         this.name = name;
         this.id = id;
         this.age = age;
@@ -17,7 +23,10 @@ public class Animal {
         this.animalType = animalType;
     }
 
-    public String getId() {
+    public Animal() {
+    }
+
+    public Long getId() {
         return id;
     }
 

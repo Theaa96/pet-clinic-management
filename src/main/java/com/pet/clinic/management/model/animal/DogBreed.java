@@ -1,10 +1,10 @@
-package com.pet.clinic.management.model;
+package com.pet.clinic.management.model.animal;
 
-public enum DogBread {
+public enum DogBreed {
     AMERICAN_PIT_BULL,
     CANE_CORSO,
     GERMAN_SHEPHERD,
-    AKITA_YNU,
+    AKITA_INU,
     AMSTAFF,
     OTHER;
 
