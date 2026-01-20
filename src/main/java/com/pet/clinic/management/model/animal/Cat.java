@@ -1,42 +1,32 @@
 package com.pet.clinic.management.model.animal;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import com.pet.clinic.management.model.users.Owner;
 
-@Entity
-@Table(name = "CAT")
+
+
 public class Cat extends Animal {
+
     private boolean coronavirusPositive;
-    private boolean felvfivPositive;
+    private boolean felvFivPositive;
 
-    public Cat(String name, Long id, Integer age, String gender, Boolean neutered, boolean coronavirusPositive, boolean felvfivPositive) {
-        super(name, id, age, gender, neutered, AnimalType.CAT);
+    public Cat(Long id,
+               String name,
+               int age,
+               String gender,
+               boolean neutered,
+               Owner owner,
+               boolean coronavirusPositive,
+               boolean felvFivPositive) {
+        super(id, name, age, gender, neutered, owner, AnimalType.CAT);
         this.coronavirusPositive = coronavirusPositive;
-        this.felvfivPositive = felvfivPositive;
-    }
-
-    public Cat() {
+        this.felvFivPositive = felvFivPositive;
     }
 
     public boolean isCoronavirusPositive() {
         return coronavirusPositive;
     }
 
-    public boolean isFelvfivPositive() {
-        return felvfivPositive;
-    }
-
-    @Override
-    public String toString() {
-        return "Cat{" +
-                "coronavirusPositive=" + coronavirusPositive +
-                ", felvfivPositive=" + felvfivPositive +
-                ", id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", gender='" + gender + '\'' +
-                ", neutered=" + neutered +
-                ", animalType=" + animalType +
-                '}';
+    public boolean isFelvFivPositive() {
+        return felvFivPositive;
     }
 }

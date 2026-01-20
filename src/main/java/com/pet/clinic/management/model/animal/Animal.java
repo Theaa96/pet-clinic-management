@@ -1,29 +1,31 @@
 package com.pet.clinic.management.model.animal;
 
-import jakarta.persistence.*;
+import com.pet.clinic.management.model.users.Owner;
 
-@MappedSuperclass
 public class Animal {
-    @Id
-    protected Long id;
-    protected String name;
-    protected Integer age;
-    protected String gender;
-    protected Boolean neutered;
+    private Long id;
+    private String name;
+    private int age;
+    private String gender;
+    private boolean neutered;
+    private Owner owner;
+    private AnimalType animalType;
 
-    @Enumerated(EnumType.STRING)
-    protected AnimalType animalType;
 
-    public Animal(String name, Long id, Integer age, String gender, Boolean neutered, AnimalType animalType) {
+    public Animal(Long id,
+                  String name,
+                  int age,
+                  String gender,
+                  boolean neutered,
+                  Owner owner,
+                  AnimalType animalType) {
         this.name = name;
         this.id = id;
         this.age = age;
         this.gender = gender;
         this.neutered = neutered;
+        this.owner = owner;
         this.animalType = animalType;
-    }
-
-    public Animal() {
     }
 
     public Long getId() {
@@ -34,19 +36,30 @@ public class Animal {
         return name;
     }
 
-    public Integer getAge() {
-        return age;
-    }
+    public Integer getAge() { return age;}
 
     public String getGender() {
         return gender;
     }
 
-    public Boolean getNeutered() {
+    public boolean isNeutered() {
         return neutered;
     }
 
     public AnimalType getAnimalType() {
         return animalType;
+    }
+
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", gender='" + gender + '\'' +
+                ", neutered=" + neutered +
+                ", owner=" + owner +
+                ", animalType=" + animalType +
+                '}';
     }
 }

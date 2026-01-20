@@ -1,39 +1,29 @@
 package com.pet.clinic.management.model.users;
 
 import com.pet.clinic.management.model.animal.Animal;
-import jakarta.persistence.*;
 
 import java.util.HashSet;
 import java.util.Set;
-
-@Entity
-@Table(name = "OWNER")
 public class Owner {
-    @Id
     private Long ownerId;
     private String address;
     private String firstName;
     private String lastName;
-    private boolean isActive;
-    @OneToMany
-    @JoinColumn(name = "ANIMAL_ID")
+    private boolean active;
     private Set<Animal> ownedPets = new HashSet<>();
 
-    public boolean hasActivePets() {
-        isActive = !ownedPets.isEmpty();
-        return isActive;
-    }
-
-    public Owner(Long ownerId, String address, String firstName, String lastName, boolean isActive, Set<Animal> ownedPets) {
+    public Owner(Long ownerId, String address, String firstName, String lastName, boolean active, Set<Animal> ownedPets) {
         this.ownerId = ownerId;
         this.address = address;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.isActive = isActive;
+        this.active = active;
         this.ownedPets = ownedPets;
     }
 
-    public Owner() {
+    public boolean hasActivePets() {
+        active = !ownedPets.isEmpty();
+        return active;
     }
 
     public void addAnimal(Animal pet) {
@@ -57,7 +47,7 @@ public class Owner {
     }
 
     public boolean isActive() {
-        return isActive;
+        return active;
     }
 
     public Set<Animal> getOwnedPets() {
